@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workouts.Pages.WorkoutDetailPage"
+             Title="{Binding Title}">
+    <ScrollView>
+        <Grid x:Name="workoutGrid" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Workout Name:" FontSize="Medium" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="{Binding name}" FontSize="Large" Grid.Row="0" Grid.Column="1"/>
+            <Label Text="Notes:" FontSize="Medium" Grid.Row="1" Grid.Column="0" />
+            <Label Text="{Binding workoutDescription}" FontSize="Medium" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="Exercises:" FontSize="Large" Grid.Row="2" Grid.Column="1"/>
+            <Label Text="{Binding workoutExercises.name}" FontSize="Medium" Grid.Row="3" Grid.Column="1"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

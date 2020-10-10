@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="NewFolder1\**" />
+      <Compile Remove="NewFolder\**" />
+      <EmbeddedResource Remove="NewFolder1\**" />
+      <EmbeddedResource Remove="NewFolder\**" />
+      <None Remove="NewFolder1\**" />
+      <None Remove="NewFolder\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="AppShell.xaml.cs" />
+      <Compile Remove="Pages\CreateNewWorkoutPage.cs" />
+      <Compile Remove="Properties\AssemblyInfo.cs" />
+      <Compile Remove="Services\DynamicGrid.cs" />
+      <Compile Remove="Services\DynamicUI.cs" />
+      <Compile Remove="Services\NavigationService.cs" />
+      <Compile Remove="Services\WorkoutStore.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="AppShell.xaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+      <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+      <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Pages\NewWorkoutsPage.xaml.cs">
+        <DependentUpon>NewWorkoutsPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="ThemeResources\WhiteTheme.xaml.cs">
+        <DependentUpon>WhiteTheme.xaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Pages\AllWorkoutsPage.xaml">
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\NewWorkoutsPage.xaml">
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\WorkoutDetailPage.xaml">
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
+    </ItemGroup>
+</Project>
