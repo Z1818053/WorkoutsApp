@@ -13,7 +13,7 @@ namespace Workouts.Models
 
         public string workoutDescription { get; set; }
 
-        public List<string> workoutExercises { get; set; }
+        public ObservableCollection<exercises> workoutExercises { get; set; }
 
     }
 }

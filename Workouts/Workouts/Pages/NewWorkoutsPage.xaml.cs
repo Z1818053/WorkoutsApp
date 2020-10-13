@@ -37,5 +37,9 @@ namespace Workouts.Pages
             
         }
 
+        private void Entry_Completed(object sender, EventArgs e)
+        {
+
+        }
     }
 }

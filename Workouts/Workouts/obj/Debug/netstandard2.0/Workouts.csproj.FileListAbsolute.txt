@@ -19,3 +19,4 @@ C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.dll
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.pdb
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.csprojAssemblyReference.cache

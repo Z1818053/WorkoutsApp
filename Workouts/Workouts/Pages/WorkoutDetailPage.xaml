@@ -1,22 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Workouts.ViewModels"
              x:Class="Workouts.Pages.WorkoutDetailPage"
-             Title="{Binding Title}">
+             Shell.PresentationMode="ModalAnimated"
+             Title="{Binding Text}">
+    <ContentPage.ToolbarItems>
+        <!--Add pencil Icon later-->
+        <ToolbarItem
+            Command="{Binding EditPageCommand}"
+            Icon="editprofile"
+            Text="Edit" />
+        <ToolbarItem
+            Command="{Binding StartWorkoutCommand}"
+            Text="Start" />
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <Grid x:Name="workoutGrid" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Text="Workout Name:" FontSize="Medium" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="{Binding name}" FontSize="Large" Grid.Row="0" Grid.Column="1"/>
-            <Label Text="Notes:" FontSize="Medium" Grid.Row="1" Grid.Column="0" />
-            <Label Text="{Binding workoutDescription}" FontSize="Medium" Grid.Row="1" Grid.Column="1"/>
-            <Label Text="Exercises:" FontSize="Large" Grid.Row="2" Grid.Column="1"/>
-            <Label Text="{Binding workoutExercises.name}" FontSize="Medium" Grid.Row="3" Grid.Column="1"/>
+            <!--Add Converter class so that if workoutDescription is null hide these two fields-->
+            <Label Text="Description:" FontSize="Large" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Label Text="{Binding Description}" FontSize="Medium" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Label Text="Exercises:" FontSize="Large" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <ListView x:Name="workoutExerciseListView"
+                          ItemsSource="{Binding workoutExercises, Mode=TwoWay}"
+                          Grid.Row="3"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:WorkoutDetailViewModel}}, Path=ItemTapped}"		
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="{Binding name, Mode=TwoWay}" FontSize="Large"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </ScrollView>
 </ContentPage>

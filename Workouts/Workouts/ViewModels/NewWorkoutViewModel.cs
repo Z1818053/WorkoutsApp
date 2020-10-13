@@ -5,7 +5,7 @@ using System.Windows.Input;
 using Workouts.Models;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
-
+using System.Linq;
 
 namespace Workouts.ViewModels
 {
@@ -13,26 +13,25 @@ namespace Workouts.ViewModels
     {
         private string text;
         private string description;
-        public ObservableCollection<string> ExercisesList { get; set;}
-        //private List<string> ExercisesList { get; set; }
-
+        public ObservableCollection<exercises> ExercisesList { get; set;}
+        public ObservableCollection<exercises> SelectedItem { get; set; }
         private string exercise;
-        //public List<string> exer = new List<string>();
 
         public NewWorkoutViewModel()
         {
-            ExercisesList = new ObservableCollection<string>();
-            //ExercisesList = new List<string>();
+            ExercisesList = new ObservableCollection<exercises>();
+            SelectedItem = new ObservableCollection<exercises>();
             AddExerciseCommand = new Command(AddExercise);
+            DeleteExerciseCommand = new Command(DeleteExercise);
             SaveCommand = new Command(OnSave, ValidateSave);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
 
+
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            return !String.IsNullOrWhiteSpace(text);
         }
 
         private async void AddExercise()
@@ -47,10 +46,17 @@ namespace Workouts.ViewModels
             //put a breakpoint here when you run and inpect the values of the Exercise. 
              await exerciseStore.AddItemAsync(newExercise);
 
-            ExercisesList.Add(newExercise.name);
+            ExercisesList.Add(newExercise);
+
+            Exercise = "";
 
         }
 
+        private void DeleteExercise()
+        {
+            
+        }
+        
         public string Text
         {
             get => text;
@@ -71,6 +77,7 @@ namespace Workouts.ViewModels
         }
         public Command SaveCommand { get; }
         public Command AddExerciseCommand { get; }
+        public Command DeleteExerciseCommand { get; }
 
         private async void OnSave()
         {
@@ -79,14 +86,13 @@ namespace Workouts.ViewModels
                 Id = Guid.NewGuid().ToString(),
                 name = Text,
                 workoutDescription = Description,
-                //workoutExercises = ExercisesList
+                workoutExercises = ExercisesList
                 
             };
 
             
 
             await DataStore.AddItemAsync(newItem);
-            //await exerciseStore.AddItemAsync(newExercise);
 
             // This will pop the current page off the navigation stack
             await Application.Current.MainPage.Navigation.PopAsync();

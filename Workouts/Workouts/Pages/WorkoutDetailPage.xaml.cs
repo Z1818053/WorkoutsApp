@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Workouts.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Workouts.Models;
 
 namespace Workouts.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WorkoutDetailPage : ContentPage
     {
-        public WorkoutDetailPage()
+        public WorkoutDetailPage(Models.workout item)
         {
             InitializeComponent();
-            BindingContext = new WorkoutDetailViewModel();
+            BindingContext = new WorkoutDetailViewModel(item);
         }
     }
 }

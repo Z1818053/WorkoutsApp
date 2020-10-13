@@ -5,9 +5,13 @@
              x:Class="Workouts.Pages.NewWorkoutPage"
              Shell.PresentationMode="ModalAnimated"
              Title="New Workout">
-
-        <ContentPage.Content>
-            <StackLayout Spacing="3" Padding="15">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding SaveCommand}"
+            Text="SAVE" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
                 <Label Text="WorkoutName" FontSize="Medium" />
                 <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
                 <Label Text="Workout Description" FontSize="Medium" />
@@ -21,26 +25,39 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Entry HeightRequest="30" Text="{Binding Exercise, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" Placeholder="Exercise Name..." PlaceholderColor="Color.DimGray" Grid.Row="0" Grid.Column="0"/>
+                <Entry HeightRequest="30" 
+                       Text="{Binding Exercise, Mode=TwoWay}" 
+                       ClearButtonVisibility="WhileEditing"
+                       Placeholder="Exercise Name..." 
+                       PlaceholderColor="Color.DimGray" 
+                       Grid.Row="0" 
+                       Grid.Column="0"/>
+                <Button HeightRequest="25" 
+                        Text="Add Exercise" 
+                        Command="{Binding AddExerciseCommand}"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
             </Grid>
             <ScrollView>
                 <ListView x:Name="exerciseListView"
-                          Margin="120,0,0,60"
-                          ItemsSource="{Binding ExercisesList}">
+                          ItemsSource="{Binding ExercisesList}"
+                              SelectedItem="{Binding SelectedItem}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding ExercisesList.name}"/>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Command="{Binding DeleteExerciseCommand}"
+                                              Text="Delete" IsDestructive="True"/>
+                                </ViewCell.ContextActions>
+                                <ViewCell.View>
+                                    <Label Text="{Binding name}"/>
+                                </ViewCell.View>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <StackLayout>
-                <Button HeightRequest="25" Text="Add Exercise" Command="{Binding AddExerciseCommand}"/>
-            </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
-                </StackLayout>
-            </StackLayout>
+        </StackLayout>
         </ContentPage.Content>
 
 </ContentPage>

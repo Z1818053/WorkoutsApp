@@ -83,11 +83,11 @@ namespace Workouts.ViewModels
             if (item == null)
                 return;
 
-            var DetailPage = new WorkoutDetailPage();
-            DetailPage.BindingContext = item;
+            //var DetailPage = new WorkoutDetailPage();
+            //DetailPage.BindingContext = item;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Application.Current.MainPage.Navigation.PushAsync(DetailPage);
+            await Application.Current.MainPage.Navigation.PushAsync(new WorkoutDetailPage(item));
         }
 
         public Command GoToNewWorkoutPageCommand { get; set; }

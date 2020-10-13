@@ -3,39 +3,59 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Workouts.Models;
 using Xamarin.Forms;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Workouts.ViewModels
 {
     //[QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class WorkoutDetailViewModel : BaseViewModel
     {
+
+        //Constructor
         public WorkoutDetailViewModel()
         {
-
+            EditWorkoutCommand = new Command(EditWorkout);
+            StartWorkoutCommand = new Command(StartWorkout);
         }
 
+        public WorkoutDetailViewModel(workout item)
+        {
+            itemId = item.Id;
+            text = item.name;
+            workoutDescription = item.workoutDescription;
+            WorkoutExercises = item.workoutExercises;
+
+            EditWorkoutCommand = new Command(EditWorkout);
+            StartWorkoutCommand = new Command(StartWorkout);
+            ItemTapped = new Command<workout>(OnItemSelected);
+        }
+
+        //Private Variables 
         private string itemId;
         private string text;
         private string workoutDescription;
-        public string Id { get; set; }
-        private exercises exerciseName;
+        private ObservableCollection<exercises> WorkoutExercises;
+        private bool ButtonsVisible = false;
 
+        //Public Variable declaractions
+
+        public string Id { get; set; }
         public string Text
         {
             get => text;
             set => SetProperty(ref text, value);
         }
-
-        public exercises ExerciseName
-        {
-            get => exerciseName;
-            set => SetProperty(ref exerciseName, value);
-        }
-
         public string Description
         {
             get => workoutDescription;
             set => SetProperty(ref workoutDescription, value);
+        }
+
+        public ObservableCollection<exercises> workoutExercises
+        {
+            get => WorkoutExercises;
+            set => SetProperty(ref WorkoutExercises, value);
         }
 
         public string ItemId
@@ -51,6 +71,7 @@ namespace Workouts.ViewModels
             }
         }
 
+        //Public Methods
         public async void LoadItemId(string itemId)
         {
             try
@@ -59,7 +80,7 @@ namespace Workouts.ViewModels
                 Id = item.Id;
                 Text = item.name;
                 Description = item.workoutDescription;
-                //exerciseName = item.workoutExercises;
+                workoutExercises = item.workoutExercises;
                
             }
             catch (Exception)
@@ -67,5 +88,28 @@ namespace Workouts.ViewModels
                 Debug.WriteLine("Failed to Load Item");
             }
         }
-    }
-}
+
+        async void OnItemSelected(workout item)
+        {
+            if (item == null)
+                return;
+
+
+        }
+
+        public void EditWorkout()
+        {
+            //figure out how to access workoutExercises
+        }
+        public void StartWorkout()
+        {
+
+        }
+
+        //Command Declarations
+        public Command EditWorkoutCommand { get; set; }
+        public Command StartWorkoutCommand { get; set; }
+        public Command<workout> ItemTapped { get; }
+
+    }//end of public class
+}//end of namespace
