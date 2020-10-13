@@ -1,6 +1,3 @@
-C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\bin\Debug\netstandard2.0\Workouts.deps.json
-C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\bin\Debug\netstandard2.0\Workouts.dll
-C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\bin\Debug\netstandard2.0\Workouts.pdb
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Pages\AllWorkoutsPage.xaml.g.cs
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Pages\DashboardPage.xaml.g.cs
@@ -16,7 +13,9 @@ C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.AssemblyInfoInputs.cache
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.AssemblyInfo.cs
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.csproj.CoreCompileInputs.cache
-C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.dll
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.pdb
-C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\Workouts.csprojAssemblyReference.cache
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\bin\Debug\netstandard2.0\Workouts.deps.json
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\bin\Debug\netstandard2.0\Workouts.dll
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\bin\Debug\netstandard2.0\Workouts.pdb
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts\obj\Debug\netstandard2.0\XamlC.stamp

@@ -50,7 +50,9 @@
                                               Text="Delete" IsDestructive="True"/>
                                 </ViewCell.ContextActions>
                                 <ViewCell.View>
-                                    <Label Text="{Binding name}"/>
+                                    <Label Text="{Binding name}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"/>
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>

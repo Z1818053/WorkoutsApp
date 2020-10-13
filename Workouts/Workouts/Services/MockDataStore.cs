@@ -12,10 +12,7 @@ namespace Workouts.Services
 
         public MockDataStore()
         {
-            items = new List<workout>()
-            {
-                new workout { Id = Guid.NewGuid().ToString(), name = "Day 1: Mondays", workoutDescription="Chest and Triceps" }
-};
+
         }
 
         public async Task<bool> AddItemAsync(workout item)

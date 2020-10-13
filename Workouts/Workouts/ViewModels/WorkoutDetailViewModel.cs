@@ -36,7 +36,6 @@ namespace Workouts.ViewModels
         private string text;
         private string workoutDescription;
         private ObservableCollection<exercises> WorkoutExercises;
-        private bool ButtonsVisible = false;
 
         //Public Variable declaractions
 
@@ -99,7 +98,7 @@ namespace Workouts.ViewModels
 
         public void EditWorkout()
         {
-            //figure out how to access workoutExercises
+            
         }
         public void StartWorkout()
         {
