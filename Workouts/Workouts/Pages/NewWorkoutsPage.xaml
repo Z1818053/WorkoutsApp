@@ -17,7 +17,7 @@
                 <Label Text="Workout Description" FontSize="Medium" />
                 <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <Label HeightRequest="20" Text="Exercises"/>
-            
+
             <Grid x:Name="exerciseGrid" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -38,27 +38,23 @@
                         Grid.Row="0"
                         Grid.Column="1"/>
             </Grid>
-            <ScrollView>
-                <ListView x:Name="exerciseListView"
+            <ListView x:Name="exerciseListView"
                           ItemsSource="{Binding ExercisesList}"
-                              SelectedItem="{Binding SelectedItem}">
+                          SelectedItem="{Binding SelectedExercise, Mode=TwoWay}"
+                          SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.ContextActions>
-                                    <MenuItem Command="{Binding DeleteExerciseCommand}"
-                                              Text="Delete" IsDestructive="True"/>
-                                </ViewCell.ContextActions>
-                                <ViewCell.View>
+                            <ViewCell Tapped="ViewCell_Tapped">
+                                <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding name}"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Center"/>
-                                </ViewCell.View>
+                                </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </ScrollView>
+                <Button Text="Delete" Command="{Binding DeleteExerciseCommand}" />
         </StackLayout>
         </ContentPage.Content>
 

@@ -15,8 +15,8 @@ namespace Workouts.Pages
 
     public partial class NewWorkoutPage : ContentPage
     {
-        //private List<exercises> exercises;
-        int exerciseCounter = 1;
+
+        public ViewCell lastCell;
         public NewWorkoutPage()
         {
             
@@ -25,21 +25,17 @@ namespace Workouts.Pages
 
         }
 
-
-        public void AddExercises(object sender, EventArgs args)
-        { 
-
-            //exerciseCounter++;
-            //Entry newExercise = new Entry { Placeholder = "Exercise Name...", PlaceholderColor = Color.DimGray};
-            //newExercise.BindingContext = "{Binding Exercise, Mode=TwoWay}";
-            //exerciseGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            //exerciseGrid.Children.Add(newExercise, 0, exerciseCounter);
-            
-        }
-
-        private void Entry_Completed(object sender, EventArgs e)
+        private void ViewCell_Tapped(object sender, System.EventArgs e)
         {
-
+            if (lastCell != null)
+                lastCell.View.BackgroundColor = Color.Transparent;
+            var viewCell = (ViewCell)sender;
+            if (viewCell.View != null)
+            {
+                viewCell.View.BackgroundColor = Color.DarkGray;
+                lastCell = viewCell;
+            }
         }
+
     }
 }

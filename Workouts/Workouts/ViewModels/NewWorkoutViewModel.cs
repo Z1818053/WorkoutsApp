@@ -11,11 +11,14 @@ namespace Workouts.ViewModels
 {
     public class NewWorkoutViewModel : BaseViewModel
     {
-        private string text;
-        private string description;
+        private string _text;
+        private string _description;
         public ObservableCollection<exercises> ExercisesList { get; set;}
         public ObservableCollection<exercises> SelectedItem { get; set; }
-        private string exercise;
+        private string _exercise;
+        private exercises _selectedExercise;
+
+
 
         public NewWorkoutViewModel()
         {
@@ -31,7 +34,7 @@ namespace Workouts.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text);
+            return !String.IsNullOrWhiteSpace(_text);
         }
 
         private async void AddExercise()
@@ -54,30 +57,48 @@ namespace Workouts.ViewModels
 
         private void DeleteExercise()
         {
+            if (SelectedExercise != null)
+            {
+                ExercisesList.Remove(SelectedExercise);
+            }
             
         }
         
+        public exercises SelectedExercise
+        {
+            get
+            {
+                return _selectedExercise;
+            }
+            set
+            {
+                if (_selectedExercise != value)
+                    _selectedExercise = value;
+                //OnPropertyChanged("SelectedStop"); //U should implement this method using INotifyPropertyChanged
+            }
+        }
+
         public string Text
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => _text;
+            set => SetProperty(ref _text, value);
         }
 
         public string Description
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => _description;
+            set => SetProperty(ref _description, value);
         }
         public string Exercise
         {
            
-            get => exercise;
-            set => SetProperty(ref exercise, value);
+            get => _exercise;
+            set => SetProperty(ref _exercise, value);
             
         }
         public Command SaveCommand { get; }
         public Command AddExerciseCommand { get; }
-        public Command DeleteExerciseCommand { get; }
+        public Command DeleteExerciseCommand { get; set; }
 
         private async void OnSave()
         {
@@ -97,6 +118,7 @@ namespace Workouts.ViewModels
             // This will pop the current page off the navigation stack
             await Application.Current.MainPage.Navigation.PopAsync();
         }
+
 
     }
 }

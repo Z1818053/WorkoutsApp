@@ -28,7 +28,8 @@ namespace Workouts.ViewModels
 
             EditWorkoutCommand = new Command(EditWorkout);
             StartWorkoutCommand = new Command(StartWorkout);
-            ItemTapped = new Command<workout>(OnItemSelected);
+            DeleteExerciseCommand = new Command(DeleteExercise);
+
         }
 
         //Private Variables 
@@ -36,6 +37,8 @@ namespace Workouts.ViewModels
         private string text;
         private string workoutDescription;
         private ObservableCollection<exercises> WorkoutExercises;
+        private exercises _selectedExercise;
+
 
         //Public Variable declaractions
 
@@ -88,14 +91,6 @@ namespace Workouts.ViewModels
             }
         }
 
-        async void OnItemSelected(workout item)
-        {
-            if (item == null)
-                return;
-
-
-        }
-
         public void EditWorkout()
         {
             
@@ -105,10 +100,33 @@ namespace Workouts.ViewModels
 
         }
 
+        private void DeleteExercise()
+        {
+            if (SelectedExercise != null)
+            {
+                WorkoutExercises.Remove(SelectedExercise);
+            }
+            
+        }
+
+        public exercises SelectedExercise
+        {
+            get
+            {
+                return _selectedExercise;
+            }
+            set
+            {
+                if (_selectedExercise != value)
+                    _selectedExercise = value;
+                //OnPropertyChanged("SelectedStop"); //U should implement this method using INotifyPropertyChanged
+            }
+        }
+
         //Command Declarations
         public Command EditWorkoutCommand { get; set; }
         public Command StartWorkoutCommand { get; set; }
-        public Command<workout> ItemTapped { get; }
+        public Command DeleteExerciseCommand { get; set; }
 
     }//end of public class
 }//end of namespace

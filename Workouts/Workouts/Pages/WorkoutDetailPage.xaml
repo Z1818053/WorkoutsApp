@@ -30,14 +30,11 @@
                           Grid.Row="3"
                           Grid.Column="0"
                           Grid.ColumnSpan="2"
-                          SelectionMode="Single">
+                          SelectionMode="Single"
+                          SelectedItem="{Binding SelectedExercise, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.ContextActions>
-                            <MenuItem Command="{Binding DeleteExerciseCommand}"
-                                              Text="Delete" IsDestructive="True"/>
-                        </ViewCell.ContextActions>
+                    <ViewCell Tapped="ViewCell_Tapped">
                         <ViewCell.View>
                             <StackLayout>
                                 <Label Text="{Binding name, Mode=TwoWay}" 
@@ -50,5 +47,11 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Delete" Command="{Binding DeleteExerciseCommand}" 
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
     </Grid>
+
 </ContentPage>
