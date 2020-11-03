@@ -6,6 +6,9 @@ using Workouts.Models;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Xml.Serialization;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Workouts.ViewModels
 {
@@ -18,6 +21,7 @@ namespace Workouts.ViewModels
         private string _exercise;
         private exercises _selectedExercise;
 
+        
 
 
         public NewWorkoutViewModel()
@@ -111,14 +115,30 @@ namespace Workouts.ViewModels
                 
             };
 
-            
 
             await DataStore.AddItemAsync(newItem);
+            //************************************
+            SavetoFile(ExercisesList);
+            //************************************
+
 
             // This will pop the current page off the navigation stack
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
+        //Check how to retrieve data to show and that this save works. 
+        public void SavetoFile(ObservableCollection<exercises> WorkoutExercises)
+        {
+            string docPath =
+          Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            using (StreamWriter file = new StreamWriter(Path.Combine(docPath, "WriteLines.txt")))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                //serialize object directly into file stream
+                serializer.Serialize(file, WorkoutExercises);
+            }
+        }
 
     }
 }

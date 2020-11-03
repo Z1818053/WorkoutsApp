@@ -80,3 +80,7 @@ C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\obj\iPhoneSimulato
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Entitlements.plist.NoneOutput.stamp
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Info.plist.NoneOutput.stamp
 C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\packages.config.NoneOutput.stamp
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\bin\iPhoneSimulator\Debug\Newtonsoft.Json.dll
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\bin\iPhoneSimulator\Debug\Newtonsoft.Json.xml
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Newtonsoft.Json.dll.ReferenceCopyLocalPaths.stamp
+C:\Users\mrycraft\source\repos\Workouts\Workouts\Workouts.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Newtonsoft.Json.xml.ReferenceCopyLocalPaths.stamp
